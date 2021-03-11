@@ -1,0 +1,44 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
+import { RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LogtableComponent } from './logtable/logtable.component';
+import {MatPaginatorModule } from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
+import { MatChipsModule } from '@angular/material/chips';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSortModule } from '@angular/material/sort';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    RouterModule,
+    NgbModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatChipsModule,
+    NgxPaginationModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSortModule
+
+
+    
+  ],
+  declarations: [
+    FooterComponent,
+    NavbarComponent,
+    SidebarComponent
+       ],
+  exports: [
+    FooterComponent,
+    NavbarComponent,
+    SidebarComponent
+  ]
+})
+export class ComponentsModule { }
