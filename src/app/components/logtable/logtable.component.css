@@ -25,7 +25,11 @@ th.mat-header-cell {
 .styled-table  th {
   background-color: #c51515;
   color: #ffffff;
-  text-align: left;
+  text-align: center;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  font-weight:500;
+
 }
 .styled-table th,
 .styled-table td {
@@ -48,5 +52,3 @@ th.mat-header-cell {
 }
 
 .stable  tr:hover {background-color: #ddd;}
-
-

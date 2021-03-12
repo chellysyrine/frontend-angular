@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { LogService } from 'src/app/_service/log/logs.service';
+import { LogService } from 'src/app/_service/log/log/logs.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { LogDetailsComponent } from '../log-details/log-details.component';
@@ -32,7 +32,7 @@ export class LogtableComponent implements OnInit {
   
    ELEMENT_DATA : Log [] = this.steps  ;
    
-  displayedColumns: string[]=['nom lot','taches','temps','details'];
+  displayedColumns: string[]=['nom lot','taches','temps'];
   dataSource= new MatTableDataSource<Log>();
   
   
@@ -95,7 +95,7 @@ onRowClicked(row){
     this.selectedRow=row;
     console.log("selected row" ,this.selectedRow);
   }
- openDetailsDialog(){
+ /*openDetailsDialog(){
     const dialogRef = this.matDialog.open(LogDetailsComponent,{
       width:'500px',
       data : {
@@ -111,7 +111,7 @@ onRowClicked(row){
     });
 
     
-  } 
+  } */
 
 
 

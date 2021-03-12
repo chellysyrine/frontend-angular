@@ -37,7 +37,8 @@ import { MatDialog } from '@angular/material/dialog';
     MatChipsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSortModule
+    MatSortModule,
+
 
     
   ],

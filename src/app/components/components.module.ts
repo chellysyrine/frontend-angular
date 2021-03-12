@@ -33,7 +33,8 @@ import { MatSortModule } from '@angular/material/sort';
   declarations: [
     FooterComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    
        ],
   exports: [
     FooterComponent,

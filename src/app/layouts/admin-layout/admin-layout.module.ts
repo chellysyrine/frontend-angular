@@ -21,7 +21,10 @@ import { MatSortModule } from '@angular/material/sort';
 import { LogtableComponent } from 'src/app/components/logtable/logtable.component';
 import { LogDetailsComponent } from 'src/app/components/log-details/log-details.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { DbtableComponent } from 'src/app/components/dbtable/dbtable/dbtable.component';
 
+
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 
 
@@ -41,7 +44,8 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
     MatFormFieldModule,
     MatInputModule,
     MatSortModule ,
-    MatDialogModule
+    MatDialogModule,
+    Ng2SmartTableModule
    ],
   declarations: [
     DashboardComponent,
@@ -50,7 +54,8 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
     IconsComponent,
     MapsComponent,
     LogDetailsComponent,
-    LogtableComponent
+    LogtableComponent,
+    DbtableComponent
   ]
 })
 
