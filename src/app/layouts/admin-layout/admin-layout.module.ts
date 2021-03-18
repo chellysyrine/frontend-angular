@@ -25,7 +25,9 @@ import { DbtableComponent } from 'src/app/components/dbtable/dbtable/dbtable.com
 
 
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { PiechartComponent } from 'src/app/components/chart/piechart/piechart.component';
 
+import { ChartsModule } from 'ng2-charts';
 
 
 // import { ToastrModule } from 'ngx-toastr';
@@ -45,7 +47,8 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
     MatInputModule,
     MatSortModule ,
     MatDialogModule,
-    Ng2SmartTableModule
+    Ng2SmartTableModule,
+    ChartsModule
    ],
   declarations: [
     DashboardComponent,
@@ -55,7 +58,8 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
     MapsComponent,
     LogDetailsComponent,
     LogtableComponent,
-    DbtableComponent
+    DbtableComponent,
+    PiechartComponent
   ]
 })
 

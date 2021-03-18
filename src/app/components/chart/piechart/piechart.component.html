@@ -1,0 +1,55 @@
+
+ <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  
+ 
+    <div class="container-fluid">
+      <div class="header-body">
+
+
+         
+      </div>
+    </div>
+</div>
+    
+ 
+ 
+ 
+<h4 style="text-align:left">Choisir un lot : </h4>
+ 
+  <select class="form-control" (change)="selectChangeHandler($event)" >
+    <option [value]="null" disabled>Choisir un lot</option>
+      <option *ngFor="let step of steps" [value]="step.aidlot" > 
+        {{step.aidlot}}
+    </option>
+ </select> 
+
+ <h4 style="text-align:left">Choisir une tache : 
+</h4>
+
+ <select class="form-control" (change)="filter($event)">
+     
+     <option [value]="null" disabled>Choisir une tache</option>
+    
+      <option *ngFor="let i of filteredtable" [value]="i.aidtrtp" > 
+      
+        
+        {{i.aidtrtp}} 
+       
+          
+ </option> 
+
+ </select>  
+
+ <h4 style="text-align:center">Etat de flag </h4>
+
+
+
+ <div style="display: block">
+    <canvas baseChart
+            [data]="pieChartData"
+            [labels]="pieChartLabels"
+            [chartType]="pieChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"
+            [colors]="chartColors"></canvas>
+  </div> 

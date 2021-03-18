@@ -14,6 +14,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
 
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { MatSortModule } from '@angular/material/sort';
     NgxPaginationModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSortModule
+    MatSortModule,
+   
 
 
     
@@ -34,6 +37,7 @@ import { MatSortModule } from '@angular/material/sort';
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
+    
     
        ],
   exports: [
