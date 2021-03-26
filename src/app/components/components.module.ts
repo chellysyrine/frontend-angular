@@ -13,6 +13,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
+import { LinechartComponent } from './chart/linechart/linechart.component';
 
 
 
@@ -37,6 +38,7 @@ import { MatSortModule } from '@angular/material/sort';
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
+    
     
     
        ],

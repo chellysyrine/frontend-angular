@@ -74,7 +74,6 @@ public getData(){
   });
   this.dataSource.data=this.steps as  Log [];
   
-  
   })
   
 }
@@ -93,7 +92,7 @@ ngAfterViewInit(): void {
   }
 onRowClicked(row){
     this.selectedRow=row;
-    console.log("selected row" ,this.selectedRow);
+    //console.log("selected row" ,this.selectedRow);
   }
  /*openDetailsDialog(){
     const dialogRef = this.matDialog.open(LogDetailsComponent,{

@@ -48,7 +48,9 @@ export class DashboardComponent implements OnInit {
 			type: 'line',
 			options: chartExample1.options,
 			data: chartExample1.data
-		});
+		
+    });
+
   }
 
 

@@ -12,38 +12,43 @@
 </div>
     
  
- 
- 
+<div class="card">
+<span class="custom-dropdown big">
+
 <h4 style="text-align:left">Choisir un lot : </h4>
  
   <select class="form-control" (change)="selectChangeHandler($event)" >
-    <option [value]="null" disabled>Choisir un lot</option>
-      <option *ngFor="let step of steps" [value]="step.aidlot" > 
-        {{step.aidlot}}
+     
+    <option   [value]="null" disabled>Choisir un lot</option>
+      <option  *ngFor="let step of table" [value]="step" > 
+        {{step}}
     </option>
- </select> 
 
+ </select> 
+</span>
  <h4 style="text-align:left">Choisir une tache : 
 </h4>
 
+<span class="custom-dropdown big">
  <select class="form-control" (change)="filter($event)">
      
      <option [value]="null" disabled>Choisir une tache</option>
     
-      <option *ngFor="let i of filteredtable" [value]="i.aidtrtp" > 
+      <option *ngFor="let i of result" [value]="i" > 
       
         
-        {{i.aidtrtp}} 
+        {{i}} 
        
           
  </option> 
 
- </select>  
+ </select> 
+</span> 
+</div> 
+
+<div class="card-left" >
 
  <h4 style="text-align:center">Etat de flag </h4>
-
-
-
  <div style="display: block">
     <canvas baseChart
             [data]="pieChartData"
@@ -53,3 +58,4 @@
             (chartClick)="chartClicked($event)"
             [colors]="chartColors"></canvas>
   </div> 
+</div>

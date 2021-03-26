@@ -9,6 +9,7 @@ import { LogtableComponent } from 'src/app/components/logtable/logtable.componen
 import { LogDetailsComponent } from 'src/app/components/log-details/log-details.component';
 import { DbtableComponent } from 'src/app/components/dbtable/dbtable/dbtable.component';
 import { PiechartComponent } from 'src/app/components/chart/piechart/piechart.component';
+import { LinechartComponent } from 'src/app/components/chart/linechart/linechart.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -19,5 +20,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'log',           component: LogtableComponent },
     { path: 'detail',         component: LogDetailsComponent},
     { path: 'base',           component:  DbtableComponent},
-    { path: 'piechart',       component:  PiechartComponent}
+    { path: 'piechart',       component:  PiechartComponent},
+    { path: 'linechart',       component:  LinechartComponent},
+
 ];

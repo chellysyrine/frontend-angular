@@ -28,6 +28,7 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { PiechartComponent } from 'src/app/components/chart/piechart/piechart.component';
 
 import { ChartsModule } from 'ng2-charts';
+import { LinechartComponent } from 'src/app/components/chart/linechart/linechart.component';
 
 
 // import { ToastrModule } from 'ngx-toastr';
@@ -59,7 +60,8 @@ import { ChartsModule } from 'ng2-charts';
     LogDetailsComponent,
     LogtableComponent,
     DbtableComponent,
-    PiechartComponent
+    PiechartComponent,
+    LinechartComponent
   ]
 })
 

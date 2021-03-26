@@ -28,15 +28,12 @@ export class PiechartComponent implements OnInit {
   taches = [];
   steps = [];
   filteredtable = [];
+  
 
-
+  result: any =[];
+  table: any =[];
 
   constructor(private service: BaseService) { }
-
-
-
-
-
   // events
   public chartClicked(e: any): void {
     console.log(e);
@@ -47,8 +44,8 @@ export class PiechartComponent implements OnInit {
   }
   public chartColors: Array<any> = [
     {
-      backgroundColor: ['#F7464A', '#46BFBD', '#FDB45C', '#949FB1'],
-      hoverBackgroundColor: ['#FF5A5E', '#5AD3D1', '#FFC870', '#A8B3C5'],
+      backgroundColor: ['#ea1100', '#f3a4b5', '##212529', '#949FB1'],
+      hoverBackgroundColor: ['#ea1100', '#f3a4b5', '##212529', '#A8B3C5'],
       borderWidth: 2,
     }
   ];
@@ -59,18 +56,7 @@ export class PiechartComponent implements OnInit {
   }
 
 
-  cleanArray(array) {
-    var i, j, len = array.length, out = [], obj = {};
-    for (i = 0; i < len; i++) {
-      obj[array[i]] = 0;
-    }
-    for (j in obj) {
-      out.push(j);
-    }
-    return out;
-  }
-
-
+  
 
   public getData() {
 
@@ -84,7 +70,17 @@ export class PiechartComponent implements OnInit {
         this.steps.push(element)
       });
 
+
+      this.steps.forEach(item =>{
+        if(this.table.indexOf(item.aidlot) < 0) {
+            this.table.push(item.aidlot);
+        }
+   });
+
     })
+
+
+  
   }
 
 
@@ -97,19 +93,31 @@ export class PiechartComponent implements OnInit {
     this.filteredtable = [];
     this.steps.forEach(element => {
       if (element.aidlot == this.selectedItem) {
+        
+        
+      
         this.filteredtable.push(element);
       }
 
     })
+    this.filteredtable.forEach(item =>{
+      if(this.result.indexOf(item.aidtrtp) < 0) {
+          this.result.push(item.aidtrtp);
+      }
+ });
+
+   
+} 
     
-  }
+
+  
+  
 
 
 
   filter(event: any) {
     this.selectedvalue = event.target.value;
-    //console.log(this.selectedItem);
-
+   
     this.o = 0;
     this.k = 0;
     this.f = 0;
@@ -144,21 +152,15 @@ export class PiechartComponent implements OnInit {
             break;
           }
         }
-        console.log('ok', this.o, 'ko', this.k, 'okf', this.f, 'tna', this.a);
+        //console.log('ok', this.o, 'ko', this.k, 'okf', this.f, 'tna', this.a);
 
       }
 
     })
     this.pieChartData.push(this.o, this.k, this.f, this.a)
-    console.log(this.pieChartData);
-    console.log(this.o);
+    //console.log(this.pieChartData);
+   
   }
-
-
-
-
-
-
 }
 
 
