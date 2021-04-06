@@ -17,6 +17,8 @@ import { LinechartComponent } from './chart/linechart/linechart.component';
 
 
 
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -37,7 +39,8 @@ import { LinechartComponent } from './chart/linechart/linechart.component';
   declarations: [
     FooterComponent,
     NavbarComponent,
-    SidebarComponent,
+    SidebarComponent
+    
     
     
     

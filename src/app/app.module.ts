@@ -10,6 +10,9 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+
+
+
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import {MatPaginatorModule } from '@angular/material/paginator';
@@ -19,6 +22,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDialog } from '@angular/material/dialog';
+
 
 
 @NgModule({
@@ -44,7 +48,8 @@ import { MatDialog } from '@angular/material/dialog';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
