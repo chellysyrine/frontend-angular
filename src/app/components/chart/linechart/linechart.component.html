@@ -12,33 +12,33 @@
 </div>
 
 
-<div class="card">
-  
-</div>
+<div fxLayoutGap="1rem" fxLayout="column">
+ 
+     <div class="select">
+        <mat-form-field appearance="outline">
+          <mat-select  (selectionChange)="eventSelection($event)">
+            <mat-option *ngFor="let echarts of echartsTypeList" [value]="echarts">{{ echarts }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+         <ng-container [ngSwitch]="selectedEchartsType">
+          <ng-container *ngSwitchCase="'Basic Line Echart'">
+            <app-base-line-echarts></app-base-line-echarts>
+          </ng-container>
+          <ng-container *ngSwitchCase="'Basic Area Echart'">
+            <app-base-area-echarts></app-base-area-echarts>
+          </ng-container>
+          <ng-container *ngSwitchCase="'Smoothed Line Echart'">
+            <app-smoothed-line-echarts></app-smoothed-line-echarts>
+          </ng-container>
+          
+        </ng-container> 
+      </div> 
+   
 
 
-                      <span class="d-none d-md-block">
-                          <select  class="form-control" (change)="selectChangeHandler($event)"  >
-                             
-                            <option   [value]="null" disabled>Choisir un lot</option>
-                              <option  *ngFor="let step of steps" [value]="step.nom_lot" > 
-                                {{step.nom_lot}}
-                            </option>
-                        
-                         </select> 
-                        </span>
-                    
-                        <div class="card">
-                          <div style="display: block">
-                          <canvas baseChart
-                              [chartType]="chartType"
-                              [labels]="taches_table"
-                              [data]="temps_table"
-                              [colors]="chartColors"
-                              [options]="chartOptions"
-                              [legend]="true"
-                              (chartHover)="chartHovered($event)"
-                              (chartClick)="chartClicked($event)">
-                          </canvas>
-                        </div>
-                        </div>
+     
+
+     

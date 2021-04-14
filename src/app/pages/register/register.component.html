@@ -38,13 +38,16 @@
           <div class="text-center text-muted mb-4">
             <small>Or sign up with credentials</small>
           </div>
-          <form role="form">
+          <form name="form" [formGroup]="form" (ngSubmit)="form.valid && onSubmit()">
             <div class="form-group">
               <div class="input-group input-group-alternative mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                 </div>
-                <input #usernameinput class="form-control" placeholder="Name" type="text">
+                <input #usernameinput class="form-control" placeholder="Name" type="text" formControlName="username" [ngClass]="{'is-invalid':form.get('username').touched && form.get('username').invalid}" required>
+                <div class="invalid-feedback">
+                  <div>username is required</div>
+                </div>
               </div>
             </div>
             <div class="form-group">
@@ -52,7 +55,12 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                 </div>
-                <input #emailInput class="form-control" placeholder="Email" type="email">
+                <input #emailInput class="form-control" placeholder="Email" type="email" formControlName="email" [ngClass]="{'is-invalid':form.get('email').touched && form.get('email').invalid}" >
+                <div *ngIf="form.get('email').touched && form.get('email').invalid"  class="invalid-feedback">
+                  <div *ngIf="form.get('email').errors.required">Email Name is required</div>
+                  <div *ngIf="form.get('email').errors.email">Email must be a valid email Address</div>
+                </div>
+             
               </div>
             </div>
             <div class="form-group">
@@ -60,7 +68,13 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                 </div>
-                <input  #pwInput class="form-control" placeholder="Password" type="password">
+                <input  #pwInput class="form-control" placeholder="Password" type="password"  formControlName="password" [ngClass]="{'is-invalid':form.get('password').touched && form.get('password').invalid}">
+                <div *ngIf="form.get('password').touched && form.get('password').invalid"  class="invalid-feedback">
+                  <div *ngIf="form.get('password').errors.required">Password is required</div>
+                  <div *ngIf="form.get('password').errors.minlength">Password  must be a letaset 6 charector</div>
+                </div>
+              
+              
               </div>
             </div>
             <div class="form-group">

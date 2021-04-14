@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 
 import { ClipboardModule } from 'ngx-clipboard';
 
@@ -22,6 +22,7 @@ import { LogtableComponent } from 'src/app/components/logtable/logtable.componen
 import { LogDetailsComponent } from 'src/app/components/log-details/log-details.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { DbtableComponent } from 'src/app/components/dbtable/dbtable/dbtable.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 import { Ng2SmartTableModule } from 'ng2-smart-table';
@@ -29,7 +30,13 @@ import { PiechartComponent } from 'src/app/components/chart/piechart/piechart.co
 
 import { ChartsModule } from 'ng2-charts';
 import { LinechartComponent } from 'src/app/components/chart/linechart/linechart.component';
+import { NgxEchartsModule } from 'ngx-echarts';
 
+import {MatSelectModule} from '@angular/material/select';
+import * as echarts from 'echarts';
+import { BaseLineEchartsComponent } from 'src/app/components/chart/linechart/base-line-echarts/base-line-echarts.component';
+import { BaseAreaEchartsComponent } from 'src/app/components/chart/linechart/base-area-echarts/base-area-echarts.component';
+import { SmoothedLineEchartsComponent } from 'src/app/components/chart/linechart/smoothed-line-echarts/smoothed-line-echarts.component';
 
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -39,6 +46,7 @@ import { LinechartComponent } from 'src/app/components/chart/linechart/linechart
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     NgbModule,
     ClipboardModule,
     MatPaginatorModule,
@@ -47,9 +55,16 @@ import { LinechartComponent } from 'src/app/components/chart/linechart/linechart
     MatFormFieldModule,
     MatInputModule,
     MatSortModule ,
+    MatCheckboxModule,
     MatDialogModule,
     Ng2SmartTableModule,
-    ChartsModule
+    ChartsModule,
+    MatSelectModule,
+    NgxEchartsModule.forRoot({echarts})
+  
+   
+  
+    
    ],
   declarations: [
     DashboardComponent,
@@ -61,7 +76,10 @@ import { LinechartComponent } from 'src/app/components/chart/linechart/linechart
     LogtableComponent,
     DbtableComponent,
     PiechartComponent,
-    LinechartComponent
+    LinechartComponent,
+    BaseLineEchartsComponent,
+    BaseAreaEchartsComponent,
+    SmoothedLineEchartsComponent,
   ]
 })
 
