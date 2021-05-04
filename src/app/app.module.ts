@@ -26,9 +26,6 @@ import { ForgetPasswordComponent } from './pages/forget-password/forget-password
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { NgxEchartsModule } from 'ngx-echarts';
 import * as echarts from 'echarts';
-import { BaseLineEchartsComponent } from './components/chart/linechart/base-line-echarts/base-line-echarts.component';
-import { BaseAreaEchartsComponent } from './components/chart/linechart/base-area-echarts/base-area-echarts.component';
-import { SmoothedLineEchartsComponent } from './components/chart/linechart/smoothed-line-echarts/smoothed-line-echarts.component';
 import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({

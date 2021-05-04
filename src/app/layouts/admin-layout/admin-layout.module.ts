@@ -34,9 +34,10 @@ import { NgxEchartsModule } from 'ngx-echarts';
 
 import {MatSelectModule} from '@angular/material/select';
 import * as echarts from 'echarts';
-import { BaseLineEchartsComponent } from 'src/app/components/chart/linechart/base-line-echarts/base-line-echarts.component';
-import { BaseAreaEchartsComponent } from 'src/app/components/chart/linechart/base-area-echarts/base-area-echarts.component';
-import { SmoothedLineEchartsComponent } from 'src/app/components/chart/linechart/smoothed-line-echarts/smoothed-line-echarts.component';
+import {MatIconModule} from '@angular/material/icon';
+
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 // import { ToastrModule } from 'ngx-toastr';
 
@@ -59,8 +60,11 @@ import { SmoothedLineEchartsComponent } from 'src/app/components/chart/linechart
     MatDialogModule,
     Ng2SmartTableModule,
     ChartsModule,
+    MatIconModule,
     MatSelectModule,
-    NgxEchartsModule.forRoot({echarts})
+    NgxEchartsModule.forRoot({echarts}),
+    MatButtonToggleModule,
+    MatSlideToggleModule
   
    
   
@@ -77,9 +81,7 @@ import { SmoothedLineEchartsComponent } from 'src/app/components/chart/linechart
     DbtableComponent,
     PiechartComponent,
     LinechartComponent,
-    BaseLineEchartsComponent,
-    BaseAreaEchartsComponent,
-    SmoothedLineEchartsComponent,
+    
   ]
 })
 

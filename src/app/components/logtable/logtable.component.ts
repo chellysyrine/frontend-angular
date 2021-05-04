@@ -114,7 +114,8 @@ onRowClicked(row){
 
 
 
-
-  
+   showDiv() {
+    document.getElementById('welcomeDiv').style.display = "block";
+ }
 
 }

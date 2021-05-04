@@ -52,3 +52,18 @@ th.mat-header-cell {
 }
 
 .stable  tr:hover {background-color: #ddd;}
+
+
+.button3 {
+  background-color: white; 
+ 
+  border: 2px solid #c51515;
+  padding: 14px 40px;
+  font-size: 16px;
+  width: 180px;
+}
+
+.button3:hover {
+  background-color: #c51515;
+  color: white;
+}

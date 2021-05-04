@@ -12,33 +12,63 @@
 </div>
 
 
-<div fxLayoutGap="1rem" fxLayout="column">
- 
-     <div class="select">
-        <mat-form-field appearance="outline">
-          <mat-select  (selectionChange)="eventSelection($event)">
-            <mat-option *ngFor="let echarts of echartsTypeList" [value]="echarts">{{ echarts }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
+    <div class="container">
+      <div class="row">
 
-         <ng-container [ngSwitch]="selectedEchartsType">
-          <ng-container *ngSwitchCase="'Basic Line Echart'">
-            <app-base-line-echarts></app-base-line-echarts>
-          </ng-container>
-          <ng-container *ngSwitchCase="'Basic Area Echart'">
-            <app-base-area-echarts></app-base-area-echarts>
-          </ng-container>
-          <ng-container *ngSwitchCase="'Smoothed Line Echart'">
-            <app-smoothed-line-echarts></app-smoothed-line-echarts>
-          </ng-container>
-          
-        </ng-container> 
-      </div> 
+        <div class="col-8">
+          <div>
+
+            <ng-container  [ngSwitch]="selectedItem">
+              
+              <div class="chart"  echarts [options]="_chartOption" [theme]="theme" (chartInit)="onChartInit($event)"></div>
+            </ng-container>  
+          </div>
+        </div>
+       
+        <div class="card">
+          <div class="card-2">
+           
+              <h1>Paramètres</h1>
+           
+          </div>
+      <div class="col-8">
+       
+        
+        <mat-button-toggle-group class="style" name="fontStyle" aria-label="Font Style" value="basic">
+          <mat-button-toggle value="basic" (click)= "_initBasicLineEchart()" ><mat-icon>timeline</mat-icon></mat-button-toggle>
+          <mat-button-toggle value="area"  (click)="_initBasicAreaEcharts()"><mat-icon>panorama</mat-icon>
+          </mat-button-toggle>
+          <mat-button-toggle value="smoothed" (click)= "_initSmoothedEchart()"><mat-icon>gesture</mat-icon>
+          </mat-button-toggle>
+          <mat-button-toggle value="bar" (click)= "_initBarEchart()"><mat-icon> bar_chart</mat-icon>
+          </mat-button-toggle>
+         
+        </mat-button-toggle-group>
+        <h4 class="lot">Choisir un lot : </h4>
    
+     <div>
+      <mat-form-field appearance="outline">
+        <mat-select (selectionChange)="selectChangeHandler($event)" [(ngModel)]="selectedOption" >
+          <mat-option *ngFor="let step of steps" [value]="step.nom_lot">{{step.nom_lot}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
 
+   
+    <h4 class="lot">Choisir un theme: </h4>
+   
+    <mat-form-field appearance="outline">
+  
+      <mat-select [(value)]="selected" id="theme-select" [(ngModel)]="theme">
+        
+        <mat-option value="vintage">vintage</mat-option>
+        <mat-option value="dark">dark</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <!-- <mat-slide-toggle  value="dark" [(ngModel)]="theme" >dark</mat-slide-toggle> -->
 
-     
-
-     
+  </div>
+  </div>  
+</div>
+</div> 
