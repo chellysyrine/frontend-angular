@@ -1,0 +1,14 @@
+:host /deep/ ng2-smart-table a { 
+    color: #dc143c;
+}
+:host /deep/ ng2-smart-table { 
+    font-size:  medium;
+}
+:host /deep/ ng2-smart-table   span.ng2-smart-page-link.page-link  {
+    background-color: #dc143c;
+    border-color: #dc143c;
+}
+:host /deep/ ng2-smart-table  input {
+    border-color:gainsboro ;
+    border-width : medium;
+}

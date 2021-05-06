@@ -8,6 +8,7 @@ import { DataSource } from '@angular/cdk/table';
 import { MatSort } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialog } from '@angular/material/dialog';
+import { EChartOption } from 'echarts';
 
 
 @Component({
@@ -27,7 +28,16 @@ export class LogtableComponent implements OnInit {
   messages =[]
   taches =[];
   steps =[];
-
+ 
+  tmp_table : string []=[];
+  taches_table:  string []=[];
+  selectedItem: string = '';
+  temps_table = [];
+  _chartOption: EChartOption;
+  selectedOption : string;
+  theme: string = undefined;
+  echartsInstance: any;
+  colorPalette = ['#dc143c'];
   
   
    ELEMENT_DATA : Log [] = this.steps  ;
@@ -73,7 +83,10 @@ public getData(){
 
   });
   this.dataSource.data=this.steps as  Log [];
-  
+  this.selectedOption = this.steps[0].nom_lot; 
+  this.initchanger();
+  this._initBasicLineEchart();
+  console.log(this.steps);   
   })
   
 }
@@ -94,28 +107,243 @@ onRowClicked(row){
     this.selectedRow=row;
     //console.log("selected row" ,this.selectedRow);
   }
- /*openDetailsDialog(){
-    const dialogRef = this.matDialog.open(LogDetailsComponent,{
-      width:'500px',
-      data : {
-        
-        nom_lot:this.selectedRow.nom_lot,
-        
-        tache:this.selectedRow.nom_tache,
-       tmp:this.selectedRow.temps_execution
-           
-      }
+ 
+   showDiv() {
+    var y= document.getElementById('div2');
+    var x = document.getElementById('welcomeDiv');
+    if (x.style.display === "none") {
+      x.style.display = "block";
+      y.style.display="none";
+    }else {
+      y.style.display = "block";
+      x.style.display="none";
+    }
+ }
+
+ 
+
+ selectChangeHandler(event: any) {
+  //update the ui
+  this.selectedItem = event.value;
+ console.log(this.selectedItem);
+ this.tmp_table=[];
+ this.taches_table=[];
+  this.steps.forEach(element => {
+    if (element.nom_lot == this.selectedItem) {
+      this.taches_table=element.nom_tache;
+      this.tmp_table=element.temps_execution;
+    }
+  })
+  this.temps_table=[];
+  //console.log( this.taches_table);
+  this.tmp_table.forEach(item =>{
+   this.temps_table.push(Number(item.substring(3)));
+  })
+  //console.log(this.temps_table);    
+}
+ initchanger(){
+  this.selectedItem = this.selectedOption;
+  console.log(this.selectedItem);
+  this.tmp_table=[];
+  this.taches_table=[];
+   
+   this.steps.forEach(element => {
+     
+     if (element.nom_lot == this.selectedItem) {
+    
+       this.taches_table=element.nom_tache;
+       this.tmp_table=element.temps_execution;
+     }
+   })
+   this.temps_table=[];
+   //console.log( this.taches_table);
+   this.tmp_table.forEach(item =>{
+    this.temps_table.push(Number(item.substring(3)))
+   })
+   //console.log(this.temps_table);   
+}
+
+ _initBasicAreaEcharts() {
+  
+  this._chartOption = {
+    
+
+    tooltip: {
+      show: true,
+      
+    },
+    title: {
+      text: 'Basic Area chart',
+     
+     
+  },
+    xAxis: {
+      type: 'category',
+      data: this.taches_table
+      
+    },
+   
+    
+    yAxis: {
+      type: 'value'
+    },
+    series: [{
      
       
-    });
+      data:this.temps_table,
+     
+      type: 'line',
+      
+      areaStyle: {}
+    }],
+    color: this.colorPalette,
+    toolbox: {
+      show: true,
+      feature: {
+          
+          dataView: {readOnly: false},
+          magicType: {type: ['line', 'bar']},
+          restore: {},
+          saveAsImage: {}
+      }
+  },
+  
+  }
+}
 
+ _initBasicLineEchart() { 
+  
+  
+  this._chartOption = {
     
-  } */
+    tooltip: {
+      show: true
+    },
+    title: {
+      text: 'Basic Line chart',
+      
+  },
+    xAxis: {
+      type: 'category',
+      data: this.taches_table
+      
+    },
+    yAxis: {
+      type: 'value'
+    },
+    series: [{
+      data:this.temps_table,
+     
+      type: 'line',
+      
+    }],
+    color: this.colorPalette,
+   
+    toolbox: {
+      show: true,
+      feature: {
+          
+          dataView: {readOnly: false},
+          magicType: {type: ['line', 'bar']},
+          restore: {},
+          saveAsImage: {}
+      }
+  },
+  
+  }
+ 
+}
+
+
+ _initSmoothedEchart() {
+
+
+  this._chartOption = {
+    tooltip: {
+      show: true,
+      
+    },
+    title: {
+      text: 'Smoothed line chart',
+      
+     
+  },
+    xAxis: {
+      type: 'category',
+      data: this.taches_table
+      
+    },
+    yAxis: {
+      type: 'value'
+    },
+    series: [{
+      data:this.temps_table,
+     
+      type: 'line',
+      smooth: true
+      
+    }],
+    color: this.colorPalette,
+    toolbox: {
+      show: true,
+      feature: {
+          
+          dataView: {readOnly: false},
+          magicType: {type: ['line', 'bar']},
+          restore: {},
+          saveAsImage: {}
+      }
+  },
+  }
+}
+
+_initBarEchart(){
+  this._chartOption = {
+
+    xAxis: {
+      type: 'category',
+      data:this.taches_table
+  },
+
+  title: {
+    text: 'Bar chart',
+    
+   
+},
+  yAxis: {
+      type: 'value'
+  },
+  series: [
+    
+    {
+      data: this.temps_table,
+      type: 'bar',
+      
+      
+  }],
+  color: this.colorPalette,
+  toolbox: {
+    show: true,
+    feature: {
+        
+        dataView: {readOnly: false},
+        magicType: {type: ['line', 'bar']},
+        restore: {},
+        saveAsImage: {}
+    }
+},
+
+  }
+
+}
 
 
 
-   showDiv() {
-    document.getElementById('welcomeDiv').style.display = "block";
- }
+
+onChartInit(e: any) {
+  this.echartsInstance = e;
+  console.log('on chart init:', e);
+}
+
 
 }

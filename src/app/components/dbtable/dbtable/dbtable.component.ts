@@ -24,53 +24,53 @@ export class DbtableComponent implements OnInit {
     columns : {
      
       aidflc : {
-        title:"aidflc",
+        title:"CLE AFLC",
         width: "50%"
       
       },
 
 
       aidlot : {
-        title:"nom lot",
+        title:"NOM LOT",
         width: "50%"
 
       },
       adtflc : {
-        title:"date flag cloture",
+        title:"DATE FLAGAGE",
         width: "50%"
 
       },
       anuwfc : {
-        title:"numero workflow",
+        title:"NUM WORKFLOW ",
         width: "50%"
 
       },
 
       acetywf : {
-        title:"type workflow",
-        width: "25%"
+        title:"TYPE WORKFLOW ",
+        width: "50%"
 
       },
       aidtrtp : {
-        title:"les taches",
-        width: "25%"
+        title:"TRAITEMENT",
+        width: "50%"
 
       },
       aidflap : {
-        title:"aidflap",
-        width: "25%"
+        title:"CODE FLAGAGE",
+        width: "50%"
 
       },
 
       
       aceflag : {
-        title:"etat flag",
-        width: "25%"
+        title:"CODE STATUT FLAGAGE ",
+        width: "50%"
 
       },
       aceflaf : {
-        title:"aceflaf",
-        width: "25%"
+        title:"CODE STATUT FLAGAGE FORCE",
+        width: "20%"
 
       },
      
@@ -80,7 +80,10 @@ export class DbtableComponent implements OnInit {
      
      
      
-    }
+    },
+    attr: {
+      class: 'table table-bordered'
+    },
   }
 
   constructor(private service :BaseService ) { }
