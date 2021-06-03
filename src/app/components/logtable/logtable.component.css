@@ -85,7 +85,7 @@ div.card.shadow{
 }
 .button3 {
   background-color: white; 
-  margin :-1px 218px -22px;
+  margin :15px 218px -22px;
   border: 2px solid #dc143c;
   padding: 14px 40px;
   font-size: 16px;
@@ -112,6 +112,7 @@ div.card-2 h1{
 .chart{
   width: 688px;
   height: 445px;
+  left: 27px;
 }
 .lot{
   text-align:left ;

@@ -13,7 +13,6 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
-import { LinechartComponent } from './chart/linechart/linechart.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 
 import { NgxEchartsModule } from 'ngx-echarts';
@@ -24,6 +23,7 @@ import * as echarts from 'echarts';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatIconModule} from '@angular/material/icon';
+
 
 
 @NgModule({
@@ -52,6 +52,7 @@ import {MatIconModule} from '@angular/material/icon';
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
+  
     
     
        ],

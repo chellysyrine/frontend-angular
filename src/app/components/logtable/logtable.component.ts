@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { LogService } from 'src/app/_service/log/log/logs.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
-import { LogDetailsComponent } from '../log-details/log-details.component';
 import { Log } from './log';
 import { DataSource } from '@angular/cdk/table';
 import { MatSort } from '@angular/material/sort';
@@ -28,20 +27,16 @@ export class LogtableComponent implements OnInit {
   messages =[]
   taches =[];
   steps =[];
- 
   tmp_table : string []=[];
   taches_table:  string []=[];
   selectedItem: string = '';
   temps_table = [];
   _chartOption: EChartOption;
   selectedOption : string;
-  theme: string = undefined;
+  theme: string = "dark";
   echartsInstance: any;
   colorPalette = ['#dc143c'];
-  
-  
-   ELEMENT_DATA : Log [] = this.steps  ;
-   
+  ELEMENT_DATA : Log [] = this.steps  ; 
   displayedColumns: string[]=['nom lot','taches','temps'];
   dataSource= new MatTableDataSource<Log>();
   

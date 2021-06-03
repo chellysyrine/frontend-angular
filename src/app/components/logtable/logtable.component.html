@@ -67,11 +67,11 @@
       
           <mat-select [(value)]="selected" id="theme-select" [(ngModel)]="theme">
             
-            <mat-option value="vintage">vintage</mat-option>
-            <mat-option value="dark">dark</mat-option>
+            <mat-option value="vintage">Vintage</mat-option>
+            <mat-option value="dark">Dark</mat-option>
           </mat-select>
         </mat-form-field>
-        <!-- <mat-slide-toggle  value="dark" [(ngModel)]="theme" >dark</mat-slide-toggle> -->
+      
     
       </div>
       </div>  
@@ -130,9 +130,7 @@
                             {{tmp}}
                           </span>
                         </tr> 
-                      </div>
-                        
-                 
+                      </div>     
              
           </td> 
         </ng-container>
@@ -142,7 +140,7 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"
         (mouseover) = "onRowClicked(row)" ></tr>
       </table>
-     <mat-paginator [pageSize]="1" [pageSizeOptions]="[2, 4, 6]" showFirstLastButtons>
+     <mat-paginator [pageSize]="1" [pageSizeOptions]="[1, 2, 4]" showFirstLastButtons>
        
 
       </mat-paginator>

@@ -6,10 +6,10 @@ import { MapsComponent } from '../../pages/maps/maps.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { LogtableComponent } from 'src/app/components/logtable/logtable.component';
-import { LogDetailsComponent } from 'src/app/components/log-details/log-details.component';
+
 import { DbtableComponent } from 'src/app/components/dbtable/dbtable/dbtable.component';
 import { PiechartComponent } from 'src/app/components/chart/piechart/piechart.component';
-import { LinechartComponent } from 'src/app/components/chart/linechart/linechart.component';
+
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -17,10 +17,9 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'tables',         component: TablesComponent },
     { path: 'icons',          component: IconsComponent },
     { path: 'maps',           component: MapsComponent },
-    { path: 'log',           component: LogtableComponent },
-    { path: 'detail',         component: LogDetailsComponent},
+    { path: 'log',           component: LogtableComponent },    
     { path: 'base',           component:  DbtableComponent},
     { path: 'piechart',       component:  PiechartComponent},
-    { path: 'linechart',       component:  LinechartComponent},
+    
 
 ];
