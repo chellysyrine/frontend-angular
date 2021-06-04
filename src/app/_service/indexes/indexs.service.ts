@@ -18,7 +18,7 @@ export class IndexsService {
 
 
   public getAllindexs() : Observable<any>{
-    return this._http.get('http://localhost:9200/_cat/indices',httpOptions);
+    return this._http.get('http://localhost:9200/_cat/indices',{responseType: 'text'});
   }
   public index_automate_wfl1_210518(): Observable<any> {
     return this._http.get('http://localhost:9200/automate_wfl1_210518*/_search?size=1500',httpOptions);

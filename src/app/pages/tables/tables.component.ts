@@ -9,21 +9,48 @@ import { IndexsService } from 'src/app/_service/indexes/indexs.service';
   styleUrls: ['./tables.component.scss']
 })
 export class TablesComponent implements OnInit {
+  messages =[]
 
   constructor(private service :IndexsService) { }
 
   ngOnInit() {
 
-    this.getData()
+    this.getIndex_automate_wfl1_210518();
+    this.getIndex_automate_wfl1_210517();
+    this.getIndex_automate_wfl1_210514();
   }
 
-  public getData(){
+  public getIndex_automate_wfl1_210518(){
 
     this.service.index_automate_wfl1_210518().subscribe(res=>{
-    
-       console.log(res);
+      this.messages =res['hits'].hits
+       console.log(this.messages);
       
    });
 
 }
+
+public getIndex_automate_wfl1_210517(){
+
+  this.service.index_automate_wfl1_210517().subscribe(res=>{
+  
+     console.log(res);
+    
+ });
+
+}
+public getIndex_automate_wfl1_210514(){
+
+  this.service.index_automate_wfl1_210514().subscribe(res=>{
+  
+     console.log(res);
+    
+ });
+
+}
+
+
+
+
+
 }

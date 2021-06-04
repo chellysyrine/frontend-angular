@@ -10,9 +10,59 @@
 </div>
 
 
-<div id="rootReact"></div>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="etat">
+    <th mat-header-cell *matHeaderCellDef> Etat </th>
+    <td mat-cell *matCellDef="let element"> {{element.etat}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="statut">
+    <th mat-header-cell *matHeaderCellDef> Statut </th>
+    <td mat-cell *matCellDef="let element"> {{element.statut}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="nom_index">
+    <th mat-header-cell *matHeaderCellDef> Nom index </th>
+    <td mat-cell *matCellDef="let element"> {{element.nom_index}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="primaries">
+    <th mat-header-cell *matHeaderCellDef> primaries </th>
+    <td mat-cell *matCellDef="let element"> {{element.primaries}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="replicas">
+    <th mat-header-cell *matHeaderCellDef> Replicas </th>
+    <td mat-cell *matCellDef="let element"> {{element.replicas}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="doc_count">
+    <th mat-header-cell *matHeaderCellDef> Doc Count </th>
+    <td mat-cell *matCellDef="let element"> {{element.doc_count}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="storagesize">
+    <th mat-header-cell *matHeaderCellDef> Storage Size </th>
+    <td mat-cell *matCellDef="let element"> {{element.storagesize}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="datastream">
+    <th mat-header-cell *matHeaderCellDef> Data Stream </th>
+    <td mat-cell *matCellDef="let element"> {{element.datastream}} </td>
+  </ng-container>
 
 
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
 
  
 
