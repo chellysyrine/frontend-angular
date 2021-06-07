@@ -3,3 +3,21 @@
     background-color: red;  
   }
 
+  .bg-yellow {
+    background-color: #ffd600 !important;
+}
+
+
+span.mb-0.text-sm {
+  color: #5d5d5d;
+  font-weight: 600; 
+}
+
+.style{
+  color: #dc143c;
+}
+
+div.card.card-stats.mb-4.mb-xl-0
+{
+  height : 155px ;
+}
