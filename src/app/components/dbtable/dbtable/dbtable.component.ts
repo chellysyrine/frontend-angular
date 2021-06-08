@@ -39,7 +39,6 @@ export class DbtableComponent implements OnInit {
   arrayOfObjects = [];
   displayedColumns: string[] = ['nom_index','etat', 'statut','new','primaries','replicas','doc_count','storagesize','datastream']
   dataSource= new MatTableDataSource<index>();
-  selectedItem: any;
    nb_index
    max_doc
    table_doc =[]
@@ -59,7 +58,7 @@ export class DbtableComponent implements OnInit {
   data: any;
   salesChart;
   chartSales;
- table_lot=[];
+  table_lot=[];
   table_storage_2=[];
   
   constructor(private service :IndexsService , private _http: HttpClient ) {
@@ -69,11 +68,7 @@ export class DbtableComponent implements OnInit {
 
   ngOnInit(): void {
    
-    this.getData();
-
-    
-   
-    
+    this.getData();  
    
   }
   
@@ -202,19 +197,8 @@ export class DbtableComponent implements OnInit {
     
   }
 
-  public index_automate_wfl1_210518(): Observable<any> {
-    return this._http.get('http://localhost:9200/'+this.selectedItem+'/_search?size=1500',httpOptions);
-  }
+  
  
-  selectChangeHandler(event: any) {
-    //update the ui
-    this.selectedItem = event.value;
-    console.log(this.selectedItem);
-    
-    this.index_automate_wfl1_210518().subscribe(res =>{
-      console.log(res)
-    })
-  }
   
   public doFilter = (value: string) => {
     this.dataSource.filter = value.trim().toLocaleLowerCase();

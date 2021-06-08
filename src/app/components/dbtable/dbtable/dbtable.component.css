@@ -9,15 +9,18 @@
 
 
 span.mb-0.text-sm {
-  color: #5d5d5d;
+  color: #525f7f;
   font-weight: 600; 
 }
 
 .style{
-  color: #dc143c;
+  color: #DC1413;
 }
 
 div.card.card-stats.mb-4.mb-xl-0
 {
   height : 155px ;
+}
+div.icon.icon-shape.text-white.rounded-circle.shadow{
+  background-color: #DC1413  !important
 }

@@ -12,7 +12,7 @@
                   <span class="h2 font-weight-bold mb-0">{{nb_index}}</span>
                 </div>
                 <div class="col-auto">
-                  <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                  <div class="icon icon-shape  text-white rounded-circle shadow">
                     <i class="fas fa-chart-bar"></i>
                   </div>
                 </div>
@@ -33,7 +33,7 @@
                 </div>
                 
                 <div class="col-auto">
-                  <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                  <div class="icon icon-shape  text-white rounded-circle shadow">
                     <i class="fas fa-chart-pie"></i>
                   </div>
                 </div>
@@ -53,7 +53,7 @@
                   <span class="h2 font-weight-bold mb-0">{{min_storage}}</span>
                 </div>
                 <div class="col-auto">
-                  <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                  <div class="icon icon-shape  text-white rounded-circle shadow">
                     <i class="fas fa-users"></i>
                   </div>
                 </div>
@@ -76,7 +76,7 @@
                   </p>
                 </div>
                 <div class="col-auto">
-                  <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                  <div class="icon icon-shape  text-white rounded-circle shadow">
                     <i class="fas fa-percent"></i>
                   </div>
                 </div>
@@ -227,15 +227,7 @@
 
 <mat-paginator [pageSize]="8" [pageSizeOptions]="[8, 10, 12]" showFirstLastButtons>
 
- 
-<mat-form-field appearance="fill">
-  <mat-label>Favorite food</mat-label>
-  <mat-select (selectionChange)="selectChangeHandler($event)">
-    <mat-option *ngFor="let obj of arrayOfObjects" [value]="obj.nom_index">
-      {{obj.nom_index}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+
 
 
 

@@ -8,7 +8,12 @@ import { MatSort } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialog } from '@angular/material/dialog';
 import { EChartOption } from 'echarts';
-
+import { IndexsService } from 'src/app/_service/indexes/indexs.service';
+import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+const httpOptions = {
+  headers: new HttpHeaders({ "Content-Type": "application/json" })
+};
 
 @Component({
   selector: 'app-logtable',
@@ -27,6 +32,7 @@ export class LogtableComponent implements OnInit {
   messages =[]
   taches =[];
   steps =[];
+  cycle_table =[];
   tmp_table : string []=[];
   taches_table:  string []=[];
   selectedItem: string = '';
@@ -37,54 +43,119 @@ export class LogtableComponent implements OnInit {
   echartsInstance: any;
   colorPalette = ['#dc143c'];
   ELEMENT_DATA : Log [] = this.steps  ; 
-  displayedColumns: string[]=['nom lot','taches','temps'];
+  displayedColumns: string[]=['Nom lot','Numéro Workflow','Numéro Cycle','Nom Utilisateur','taches','temps', 'heure'];
   dataSource= new MatTableDataSource<Log>();
   
-  
+    arrayOfObjects = [];
+
   
   @ViewChild(MatPaginator) paginator : MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   selectedRow: any;
+  nom_index: any;
+  nom_lot: any;
+  
+  num_workflow: any;
+  type_workflow: any;
+  selected: any;
+  selectedoption: string;
+  default_option: string;
 
 
-  constructor(private service :LogService , private matDialog : MatDialog ) { }
+  constructor(private service :IndexsService , private matDialog : MatDialog , private _http: HttpClient) { }
 
   ngOnInit(): void {
 
   this.getData();
+
+  
+
   }
    
   
+   
 public getData(){
-  this.service.Afficher().subscribe(res=>{
-  
-    this.messages =res['hits'].hits
-    this.messages.forEach(element => {
-
-    this.taches.push(element._source);
+  var newObj = {};
+  this.service.getAllindexs().subscribe(
+   
+    r => {
+     this.arrayOfObjects=[]
+      var arr = r.split(/\n/)
+      arr.forEach(element => {
+       
+        var item =element.split(/\s+/)
+       
         
-      //console.log(element._source["@timestamp"]);
-    this.taches.sort(function (a,b) {
-      return <any> new Date (a["@timestamp"]) - <any> new Date(b["@timestamp"]);
-    })
-});
+         for (var i = 0; i < item.length; ++i){
+          newObj = {}
+
+          newObj={
+            etat : item[0],
+            statut:item[1],
+            nom_index:item[2],
+            new:item[3],
+            primaries:item[4],
+            replicas:item[5],
+            doc_count:item[6],
+            datastream:item[7],
+            storagesize:item[8],
+
+          }  
+         
+        }
+        
+        this.arrayOfObjects.push(newObj)
+       
+        });
+
+        this.arrayOfObjects.forEach(element=>{
+
+          if(!element.nom_index.includes("automate"))  
+          { const index= this.arrayOfObjects.indexOf(element);
+            this.arrayOfObjects.splice(index)   
+          }
+        
+        });
+       
+        this.default_option= this.arrayOfObjects[0].nom_index;
+        console.log(this.default_option);
+      });
+      setInterval(() => {
+        this.default_service(this.default_option).subscribe(res =>{
+          this.messages =res['hits'].hits
+          this.taches=[];
+           
+          this.messages.forEach(element => {
+      
+          this.taches.push(element._source);
+              
+        
+        })
+        this.taches.sort(function (a,b) {
+          return <any> new Date (a["@timestamp"]) - <any> new Date(b["@timestamp"]);
+        })
+      
+       this.dataSource.data=this.taches as Log [];
+       
+      
+       console.log(this.dataSource.data);
+      
+        });
+    
+      }, 5000);
       
 
-  this.taches.forEach(element =>{
-        
-        //console.log(element);
-        this.steps.push(element)  
-
-  });
-  this.dataSource.data=this.steps as  Log [];
-  this.selectedOption = this.steps[0].nom_lot; 
-  this.initchanger();
-  this._initBasicLineEchart();
-  console.log(this.steps);   
-  })
-  
+   
 }
+
+public default_service(vv): Observable<any> {
+ console.log(vv)
+  return this._http.get('http://localhost:9200/'+this.default_option+'/_search?size=5000',httpOptions);
+}
+
+
+
 public doFilter = (value: string) => {
   this.dataSource.filter = value.trim().toLocaleLowerCase();
 }
@@ -100,7 +171,7 @@ ngAfterViewInit(): void {
   }
 onRowClicked(row){
     this.selectedRow=row;
-    //console.log("selected row" ,this.selectedRow);
+    console.log("selected row" ,this.selectedRow);
   }
  
    showDiv() {
@@ -115,36 +186,56 @@ onRowClicked(row){
     }
  }
 
- 
+
+
+
+
+public index_service(): Observable<any> {
+  return this._http.get('http://localhost:9200/'+this.selectedItem+'/_search?size=5000',httpOptions);
+}
 
  selectChangeHandler(event: any) {
+  
   //update the ui
   this.selectedItem = event.value;
- console.log(this.selectedItem);
- this.tmp_table=[];
- this.taches_table=[];
-  this.steps.forEach(element => {
-    if (element.nom_lot == this.selectedItem) {
-      this.taches_table=element.nom_tache;
-      this.tmp_table=element.temps_execution;
-    }
-  })
-  this.temps_table=[];
-  //console.log( this.taches_table);
-  this.tmp_table.forEach(item =>{
-   this.temps_table.push(Number(item.substring(3)));
-  })
-  //console.log(this.temps_table);    
-}
- initchanger(){
-  this.selectedItem = this.selectedOption;
   console.log(this.selectedItem);
+  
+  
+  this.index_service().subscribe(res =>{
+    this.messages =res['hits'].hits
+    this.taches=[];
+     
+    this.messages.forEach(element => {
+
+    this.taches.push(element._source);
+        
+  
+  })
+  this.taches.sort(function (a,b) {
+    return <any> new Date (a["@timestamp"]) - <any> new Date(b["@timestamp"]);
+  })
+
+ this.dataSource.data=this.taches as Log [];
+ 
+
+ console.log(this.dataSource.data);
+
+  });
+
+
+
+ }
+
+
+ 
+ initchanger(){
+  this.selectedoption = this.selectedOption;
   this.tmp_table=[];
   this.taches_table=[];
    
-   this.steps.forEach(element => {
+   this.taches.forEach(element => {
      
-     if (element.nom_lot == this.selectedItem) {
+     if (element.num_cycle == this.selectedoption) {
     
        this.taches_table=element.nom_tache;
        this.tmp_table=element.temps_execution;

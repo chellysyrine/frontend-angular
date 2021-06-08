@@ -1,20 +1,25 @@
 <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
   
  
-    <div class="container-fluid">
-      <div class="header-body">
+  <div class="container-fluid">
+    <div class="header-body">
 
 
-
-      </div>
+       
     </div>
+  </div>
 </div>
+  
+
+
+
 <div class="container-fluid mt--7">
 <div class="row">
     <div class="col">
       <div class="card shadow"  >
         <div class="card-header border-0">
           <h3 class="titre">Visualisation des logs</h3>
+          
         </div>
         <div id="welcomeDiv"  style="display:none;" class="answer_list" > 
           <div class="container">
@@ -49,12 +54,24 @@
               </mat-button-toggle>
              
             </mat-button-toggle-group>
-            <h4 class="lot">Choisir un lot : </h4>
+
+
+            <h4 class="lot">Choisir un indexe : </h4>
+            <mat-form-field appearance="fill">
+              <mat-label>Index </mat-label>
+              <mat-select  [(value)]="selected" (selectionChange)="selectChangeHandler($event)">
+                <mat-option *ngFor="let obj of arrayOfObjects" [value]="obj.nom_index">
+                  {{obj.nom_index}}
+                </mat-option>
+              </mat-select>       
+            </mat-form-field>
+
+            <h4 class="lot">Choisir un cycle : </h4>
        
          <div>
           <mat-form-field appearance="outline">
-            <mat-select (selectionChange)="selectChangeHandler($event)" [(ngModel)]="selectedOption" >
-              <mat-option *ngFor="let step of steps" [value]="step.nom_lot">{{step.nom_lot}}
+            <mat-select (selectionChange)="initchanger()" [(ngModel)]="selectedOption" >
+              <mat-option *ngFor="let tache of taches" [value]="tache.num_cycle">{{tache.num_cycle}}
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -80,21 +97,43 @@
     </div>
 
     <div id="div2"  style="display:block;">
-      <div fxLayout fxLayoutAlign="center center">
+      <h4 class="lot">Choisir un indexe : </h4>
+      <mat-form-field appearance="fill">
+        <mat-label>Index </mat-label>
+        <mat-select   (selectionChange)="selectChangeHandler($event)">
+          <mat-option *ngFor="let obj of arrayOfObjects" [value]="obj.nom_index">
+            {{obj.nom_index}}
+          </mat-option>
+        </mat-select>       
+      </mat-form-field>
+      <!-- <div fxLayout fxLayoutAlign="center center">
               <mat-form-field  fxFlex="40%">
                 <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
               </mat-form-field>
-            </div> 
+            </div> -->
   
-  <!-- <div class="mat-elevation-z8"> -->
+   <div class="mat-elevation-z8">
      <table mat-table  [dataSource]="dataSource" matSort class="styled-table" >
   
-        <ng-container matColumnDef="nom lot">
+        <ng-container matColumnDef="Nom lot">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Nom du lot  </th>
            <td mat-cell *matCellDef="let element"> {{element.nom_lot}} </td> 
         </ng-container>
+        <ng-container matColumnDef="Numéro Workflow">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Numéro du workflow </th>
+           <td mat-cell *matCellDef="let element"> {{element.num_workflow}} </td> 
+        </ng-container>
     
+        <ng-container matColumnDef="Numéro Cycle">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Numéro Cycle </th>
+           <td mat-cell *matCellDef="let element"> {{element.num_cycle}} </td> 
+        </ng-container>
+        <ng-container matColumnDef="Nom Utilisateur">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Nom utilisateur</th>
+           <td mat-cell *matCellDef="let element"> {{element.Nom_utilisateur}} </td> 
+        </ng-container>
         
+    
          <ng-container matColumnDef="taches">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>  Taches executés  </th>
            <td class="stable" mat-cell *matCellDef="let element"> 
@@ -135,25 +174,130 @@
           </td> 
         </ng-container>
         
-      
+        <ng-container matColumnDef="heure">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Heure de lancement </th>
+           <td  class="stable" mat-cell *matCellDef="let element"> 
+             <div *ngIf="typeOf(element.heure) === 'string' "> {{element.heure}}</div> 
+                
+                  
+                      <div>
+                          <tr  *ngFor="let tmp of element.heure">
+                            <span *ngIf="typeOf(element.heure) === 'object' ">
+                            {{tmp}}
+                          </span>
+                        </tr> 
+                      </div>     
+             
+          </td> 
+        </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"
         (mouseover) = "onRowClicked(row)" ></tr>
-      </table>
+      </table> 
      <mat-paginator [pageSize]="1" [pageSizeOptions]="[1, 2, 4]" showFirstLastButtons>
        
 
       </mat-paginator>
     
-    <!-- </div> -->
-  </div>
+    
+  </div> 
   
     <button class="button button3"  name="answer" value="Show Div" (click)="showDiv()">Chart view </button>
    
     
     <button class="button"  name="table" value="Show Div 2" (click)="showDiv()">Tableau de bord </button>
- 
+
 </div>
 </div>
 </div>
+</div>   
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>
+        
+                      We Humanize Technology 
+          
+      </h2>
+    </div>
+  </div>
+  <div class="row">
+    
+                      <div class="col-md-3 col-sm-3 key-figure">
+    
+                        <img src="/sites/default/files/styles/style_linedata_key_figures_default/public/2020-09/Office_1.png?itok=fexdt0Bt" alt="offices" typeof="foaf:Image" class="image-style-style-linedata-key-figures-default">
+
+
+
+          
+  <div class="results">
+  <span class="numbers animated">20</span>
+  <span class="people">
+    
+                      bureaux
+          
+  </span>
 </div>
+</div>
+
+                  <div class="col-md-3 col-sm-3 key-figure">
+    
+                        <img src="/sites/default/files/styles/style_linedata_key_figures_default/public/2020-09/Employees_0.png?itok=ZDL0-QH4" alt="collaborateurs" typeof="foaf:Image" class="image-style-style-linedata-key-figures-default">
+
+
+
+          
+  <div class="results">
+  <span class="numbers animated">1 100</span>
+  <span class="people">
+    
+                      collaborateurs
+          
+  </span>
+</div>
+</div>
+
+                  <div class="col-md-3 col-sm-3 key-figure">
+    
+                        <img src="/sites/default/files/styles/style_linedata_key_figures_default/public/2020-09/Handshake_1.png?itok=JHaPksQ0" alt="clients" typeof="foaf:Image" class="image-style-style-linedata-key-figures-default">
+
+
+
+          
+  <div class="results">
+  <span class="numbers animated">730</span>
+  <span class="people">
+    
+                      clients
+          
+  </span>
+</div>
+</div>
+
+                  <div class="col-md-3 col-sm-3 key-figure">
+    
+                        <img src="/sites/default/files/styles/style_linedata_key_figures_default/public/2020-09/World_1.png?itok=dUDuwNOe" alt="utilisateurs" typeof="foaf:Image" class="image-style-style-linedata-key-figures-default">
+
+
+
+          
+  <div class="results">
+  <span class="numbers animated">63 000</span>
+  <span class="people">
+    
+                      utilisateurs dans le monde
+          
+  </span>
+</div>
+</div>
+
+          
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <a href="https://fr.linedata.com/nos-bureaux" class="btn btn-color-3">
+        Découvrez nos bureaux
+      </a>
+    </div>
+  </div>
+</div> -->
