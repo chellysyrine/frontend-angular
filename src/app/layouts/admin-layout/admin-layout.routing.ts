@@ -12,13 +12,13 @@ import { PiechartComponent } from 'src/app/components/chart/piechart/piechart.co
 
 
 export const AdminLayoutRoutes: Routes = [
-    { path: 'dashboard',      component: DashboardComponent },
+    { path: 'dashboard',       component:  DbtableComponent },
     { path: 'user-profile',   component: UserProfileComponent },
     { path: 'tables',         component: TablesComponent },
     { path: 'icons',          component: IconsComponent },
     { path: 'maps',           component: MapsComponent },
     { path: 'log',           component: LogtableComponent },    
-    { path: 'base',           component:  DbtableComponent},
+    
     { path: 'piechart',       component:  PiechartComponent},
     
 

@@ -62,7 +62,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatSelectModule,
     NgxEchartsModule.forRoot({echarts}),
     MatButtonToggleModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    NgxEchartsModule
   
    
   

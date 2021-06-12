@@ -1,7 +1,11 @@
 table{
+ 
+  
     width: 100%;
     margin :auto;
 }
+
+
 th.mat-sort-header-sorted {
   color: black;
 }
@@ -19,7 +23,10 @@ mat-form-field[_ngcontent-abq-c5] {
   font-weight: bold;
   font-size: 20px;
 }
-
+mat-header-cell.mat-sort-header.ng-tns-c12-8.cdk-column-Nom-lot.mat-column-Nom-lot.ng-star-inserted
+{
+  width:153px;
+}
 th.mat-header-cell {
   text-align: center;
   max-width: 300px;
@@ -47,7 +54,7 @@ th.mat-header-cell {
 }
 .stable tr span{
   border-bottom: 0px  solid #dddddd;
-  width: 300px;
+  width: 153px;
   height: 22px;
 }
 
@@ -55,9 +62,7 @@ th.mat-header-cell {
   background-color: #f3f3f3;
   
 }
-div.card.shadow{
-  height: 708px
-}
+
 
 .stable span{
   display: flow-root;
@@ -69,7 +74,7 @@ div.card.shadow{
 .button{
 
   background-color: white; 
-  margin: -31px 6px;
+  margin: -49px -203px 17px 14px;
   border: 2px solid #dc143c;
   padding: 15px 20px;
   font-size: 16px;
@@ -80,12 +85,12 @@ div.card.shadow{
 .button:hover
 .button:focus {
   
-  background-color: #dc143c;
+  background-color: #c51515;
   color: white;
 }
 .button3 {
   background-color: white; 
-  margin :15px 218px -22px;
+  margin: 10px 1px 4px 409px;
   border: 2px solid #dc143c;
   padding: 14px 40px;
   font-size: 16px;
@@ -104,6 +109,14 @@ div.card-2 {
   margin: -23px 20px;
   background-color: #dc143c;
   border-radius: 148;
+}
+div.card-3{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+  border-radius: 148;
+  margin-top: 12px;
+
+
 }
 div.card-2 h1{
   margin: 6px 0 16px;
@@ -144,6 +157,7 @@ div.card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
   border-radius: 148;
+  margin-top: -146px;
 }
 .stable[_ngcontent-xxy-c5] span[_ngcontent-xxy-c5] {
   display: flow-root;
@@ -156,3 +170,44 @@ div.card {
 	margin:10px 2.5% 10px 2.5%;
 	text-align:center;
 } 
+.demo-chart1{
+  margin-top: -53px;
+  width: 943px;
+  height: 517px;
+  left: -114px;
+
+  height:517px;
+}
+.demo-chart{
+  left: -331px;
+}
+div.card-body{
+  margin-left: 92px;
+}
+div.card.shadow.chart{
+  margin-top: -102px;
+    height: 486px;
+    width: 538px;
+    left: -221px;
+
+}
+div.card.shadow.charte{
+  margin-top: -96px;
+  width: 435px;
+  height: 470px;
+}
+
+div.chart-2{
+  margin-top: -65px;
+ 
+  margin-left: -89px;
+  width: 379px;
+}
+
+.style_select {
+  right: 391px;
+}
+div.card.bg-gradient-default.shadow{
+  margin-top: 110px;
+    width: 1012px;
+}
